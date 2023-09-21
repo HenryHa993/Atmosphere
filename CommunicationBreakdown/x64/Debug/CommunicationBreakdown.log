@@ -1,4 +1,5 @@
-﻿  CommunicationBreakdown.cpp
+﻿  AI_Manager.cpp
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\Atmosphere\CommunicationBreakdown\AI_Manager.cpp(4,1): error C2512: 'Alien': no appropriate default constructor available
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\Atmosphere\CommunicationBreakdown\Alien.h(6,7): message : see declaration of 'Alien'
   Room.cpp
   Generating Code...
-  CommunicationBreakdown.vcxproj -> C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\Atmosphere\x64\Debug\CommunicationBreakdown.exe

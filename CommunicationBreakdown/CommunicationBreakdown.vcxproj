@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AI_Manager.cpp" />
     <ClCompile Include="Alien.cpp" />
     <ClCompile Include="CommunicationBreakdown.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="Room.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AI_Manager.h" />
     <ClInclude Include="Alien.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Player.h" />
