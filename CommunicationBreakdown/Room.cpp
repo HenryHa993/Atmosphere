@@ -35,9 +35,9 @@ void Room::setDescription(const std::string description)
 // Are all aliens dead?
 bool Room::areAliensDead()
 {
-	for (Alien alien : aliens_)
+	for (Alien* alien : aliens_)
 	{
-		if (alien.isAlive())
+		if (alien->isAlive())
 		{
 			return false;
 		}
@@ -60,9 +60,9 @@ int Room::countAliens()
 	//return len;
 	int count = 0;
 
-	for (Alien alien : aliens_)
+	for (Alien* alien : aliens_)
 	{
-		if (alien.isAlive())
+		if (alien->isAlive())
 		{
 			count++;
 		}

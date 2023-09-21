@@ -19,6 +19,7 @@ public:
 	void setName(const std::string name);
 	void setDescription(const std::string description);
 
+	// We using only one alien :( so these are likely unused
 	bool areAliensDead();
 	bool isOccupied();
 	int countAliens();
@@ -28,6 +29,7 @@ private:
 	std::string name_;
 	std::string description_;
 	std::string motion_;
-	std::vector<Alien> aliens_; // Should a single alien occupy a room?
+	// We using only one alien :( so this is likely unused
+	std::vector<Alien*> aliens_;
 };
 

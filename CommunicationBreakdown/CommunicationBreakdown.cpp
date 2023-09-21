@@ -4,6 +4,7 @@
 #include <iostream>
 #include <functional>
 #include <vector>
+#include <chrono>
 
 #include "Player.h"
 #include "Room.h"
@@ -13,12 +14,36 @@
 using namespace std;
 int main()
 {
-	cout << "Welcome to SPACE GAME, press enter to start ..";
-	cin;
+	cout << "\n\n";
+	cout << " ___________________________________________________________________________________________________________________\n";
+	cout << "|                                                                                                                   |\n";
+	cout << "|     _______    _______    _______    _______     ______    ______     _     _    _______    ______     _______    |\n";
+	cout << "|    (_______)  (_______)  (_______)  (_______)   / _____)  (_____ \\\   ( )   ( )  (  _____)  (_____ \\\   (_______)   |\n";
+	cout << "|     _______       _       _  _  _    _     _   ( (____     _____) )  | |___| |  | |____      _____)   ) _____     |\n";
+	cout << "|    |  ___  |     | |     | ||_|| |  | |   | |   \\\____ \\\   |  ____/   |  ___  |  |  ___)    |  __  /   |  ___)     |\n";
+	cout << "|    | |   | |     | |     | |   | |  | |___| |   _____) )  | |        | |   | |  | |_____   | |  \\\ \\\   | |_____    |\n";
+	cout << "|    |_|   |_|     |_|     |_|   |_|   \\\_____/   (______/   |_|        |_|   |_|  |_______)  |_|   |_|  |_______)   |\n";
+	cout << "|                                                                                                                   |\n";
+	cout << "|___________________________________________________________________________________________________________________|\n";
+	cout << "\n\n";
 
-	cout << "You awake and feel the cold metal floor below you. An industrial light in the corner of the room is flickering on and off.\n";
-	cout << "A gut-wrenching scream from somewhere in the northeast direction rings out and sends shivers down your spine\n";
-	cout << "Your head was hurt so you cannot remember what items you had on you\nType <bag> to look in your inventory and <health> to check your health status\n";
+	cout << "\t _____________________________________\n";
+	cout << "\t|                                     |\n";
+	cout << "\t|    FRIDAY, SEPTEMBER 22ND, 2123.    |\n";
+	cout << "\t|_____________________________________|\n";
+	cout << "\n";
+	cout << "\tMESSAGES:\n\n";
+	cout << "\tFROM:      COMMANDER WHITE\n";
+	cout << "\tTO:        UNITED TERRA SPACE COMMAND\n";
+	cout << "\tSUBJECT:   MISSION CRITICAL\n\n";
+	cout << "\tBODY:      URGENT MESSAGE. SPECIMEN_NOVUS IS NO LONGER DORMANT. FAIL-SAFE CONTINGENCIES 1 - 3 HAVE FAILED.\n";
+	cout << "\t\t   COMMANDING OFFICER WHITE ON ROUTE TO TRIGGER FAIL-SAFE 4, STATION DESTRUCTION. \n ";
+	cout << "";
+	cout << "";
+	cout << "";
+	cout << "";
+	cout << "";
+
 
 	// Initialising the player
 	auto player = Player(5, vector<Item> {	});
@@ -172,13 +197,19 @@ int main()
 	Room* current = &cargoBay;
 	std::string command;
 
-	// Testing the aliens
+	// TESTING ALIEN
 	Alien john = Alien("This guy is bananas");
-	//std::cout << "cargo bay count" + cargoBay.alienCount();
-	std::cout << "";
+
+	int playerMoves;
+	auto start_time = std::chrono::high_resolution_clock::now(); // TIMER STARTS NOW
 
 	do
 	{
+		// ALIEN TESTING
+		auto current_time = std::chrono::high_resolution_clock::now();
+		std::cout << "Time till atmospheric entry: " << 360 - std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count() << " seconds.\n";
+
+		// MAIN COMMANDS CHECKING
 		std::cout << "> ";
 		std::cin >> command;
 		//add commands here
