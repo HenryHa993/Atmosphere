@@ -143,6 +143,26 @@ int main()
 	Room hazmat = Room("Hazardous Materials (Science Zone)", 
 		"", "", 0, "", "", []() {return 0; }, empty_vector);
 
+	std::vector<Room*> allRooms = {
+	&kitchen,
+	&messRoom,
+	&spaceGym,
+	&resiCorridor,
+	&crewQuarters,
+	&office,
+	&washRoom,
+	&equipmentBay,
+	&cargoBay,
+	&escapeBay,
+	&repairBay,
+	&sciCorridor,
+	&labOne,
+	&labTwo,
+	&monStation,
+	&trashEject,
+	&medBay,
+	&hazmat
+	};
 
 	//#####// LINKING ROOMS //#####//
 
@@ -213,10 +233,16 @@ int main()
 	Room* current = &cargoBay;
 	std::string command;
 
-	// TESTING ALIEN
+	// INITIALISE ALIEN
 	Alien john = Alien("This guy is bananas");
+	cargoBay.addAlien(&john);
 
-	int playerMoves;
+	// INITIALISE MOVE COUNTERS FOR ALIEN MOVEMENT
+	int playerMoves = 0;
+	int moveInterval = 3;
+	int alienMoves = 0;
+
+	// TIMER INITIALISATION
 	auto start_time = std::chrono::high_resolution_clock::now(); // TIMER STARTS NOW
 
 	do
@@ -224,8 +250,14 @@ int main()
 		// ALIEN TESTING
 		auto current_time = std::chrono::high_resolution_clock::now();
 		//std::cout << "Time till atmospheric entry: " << 360 - std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count() << " seconds.\n";
+		//std::cout << "Testing isAdjacent: " << cargoBay.isAdjacent(&equipmentBay);
+		//cargoBay.shuffleAliens(current);
+		//for (Room* room : allRooms)
+		//{
+		//	room->shuffleAliens(current);
+		//}
 
-		// MAIN COMMANDS CHECKING
+		// CHECKING COMMANDS
 		std::cout << endl << "> ";
 		std::cin >> command;
 		//add commands here
@@ -311,7 +343,24 @@ int main()
 				std::cout << "You shake your head in confusion\n";
 			}
 		}
-	} while (command != "exit");
+
+		// ALIEN MOVEMENTS HAPPEN AFTER PLAYER MOVES
+		// Player increment counter
+		playerMoves++;
+		std::cout << "Player moves: " << playerMoves << ".\n";
+
+		if(alienMoves < playerMoves/moveInterval)
+		{
+			alienMoves = playerMoves / moveInterval;
+			std::cout << "Alien moves: " << alienMoves << ".\n";
+			for (Room* room : allRooms)
+			{
+				room->shuffleAliens(current);
+			}
+		}
+
+	}
+	while (command != "exit");
 
 
 }

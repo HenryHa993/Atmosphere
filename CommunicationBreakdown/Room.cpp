@@ -1,3 +1,5 @@
+#include <cstdlib>
+
 #include "Room.h"
 
 Room::Room(std::string name, std::string description, std::string look, bool aliens, std::string aliens_text, std::string sensor, std::function<int()> behaviour, std::vector<Item> items)
@@ -10,7 +12,8 @@ Room::Room(std::string name, std::string description, std::string look, bool ali
 	sensor_ = sensor;
 	behaviour_ = behaviour;
 	items_ = items;
-	//aliens_ = {};
+
+	aliensVector_ = {}; // For aliens
 }
 
 std::string Room::get_name()
@@ -66,8 +69,15 @@ void Room::remove_item(int position)
 // If the room is occupied with aliens (not dead), then returns true
 bool Room::isOccupied()
 {
-	return aliens_;
+	return !aliensVector_.empty(); // slight change
+	//return aliens_;
 }
+
+void Room::addAlien(Alien* alien)
+{
+	aliensVector_.push_back(alien);
+}
+
 
 // Return number of live aliens occupying a room
 //int Room::countAliens()
@@ -86,3 +96,75 @@ bool Room::isOccupied()
 //
 //	return count;
 //}
+
+// Check if a room is adjacent to another
+bool Room::isAdjacent(Room* room)
+{
+	return (linked_rooms["north"] == room || linked_rooms["east"] == room || linked_rooms["south"] == room || linked_rooms["west"] == room);
+}
+
+// Used to randomise alien direction of movement
+std::string Room::randomDirection()
+{
+	int randInt = rand() % 4;
+	//std::cout << randInt << "\n";
+
+	switch (randInt)
+	{
+	case 0:
+		return "north";
+		break;
+	case 1:
+		return "east";
+		break;
+	case 2:
+		return "south";
+		break;
+	case 3:
+		return "west";
+		break;
+	default:
+		return "north";
+		break;
+	}
+}
+
+void Room::moveAlien(Room* room)
+{
+	std::cout << "Moving alien from " << name_ << " to " << room->name_ << ".\n";
+
+	room->aliensVector_.push_back(aliensVector_.back());
+	aliensVector_.pop_back();
+}
+
+void Room::shuffleAliens(Room* currentRoom)
+{
+	if (isOccupied())
+	{
+		for (Alien* alien : aliensVector_)
+		{
+			if (isAdjacent(currentRoom))
+			{
+				// This can be put into a function
+				moveAlien(currentRoom);
+			}
+			else
+			{
+				// Randomised alien placements
+				// Probably put this in a function to redo
+				std::string movement;
+				movement = randomDirection();
+
+				while (linked_rooms.find(movement) == linked_rooms.end())
+				{
+					movement = randomDirection();
+				}
+
+				moveAlien(linked_rooms[movement]);
+				// Randomise movement
+			}
+		}
+	}
+
+	std::cout << "No alien present in " << name_ << ".\n";
+}

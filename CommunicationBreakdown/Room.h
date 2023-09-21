@@ -13,6 +13,7 @@ class Room
 public:
 	Room();
 	Room(std::string name, std::string description, std::string look, bool aliens, std::string aliens_text, std::string sensor, std::function<int()> behaviour, std::vector<Item> items);
+
 	std::map <std::string, Room*> linked_rooms = {};
 
 	std::string get_name();
@@ -24,21 +25,28 @@ public:
 	void setName(const std::string name);
 	void setDescription(const std::string description);
 
-	// We using only one alien :( so these are likely unused
-	bool areAliensDead();
+	//bool areAliensDead();
 	bool isOccupied();
-	int countAliens();
+	void addAlien(Alien* alien);
+	//int countAliens();
 	//void removeAlien(Alien alien);
+
+	std::string randomDirection();
+	void moveAlien(Room* currentRoom);
+	bool isAdjacent(Room* room); // Check if room is adjacent to another
+	void shuffleAliens(Room* currentRoom);
 
 private:
 	std::string name_;  // ..
 	std::string description_; // ..
 	std::string sensor_; // a piece of text displayed when the <sensor> command is used
 	std::string look_; // a piece of text displayed when the <look> command is used
-	bool aliens_; // Should a single alien occupy a room?
+
+	bool aliens_;
 	std::string aliens_text_;
 	std::function<int()> behaviour_;
 	std::vector<Item> items_;
-	// We using only one alien :( so this is likely unused
+	
+	std::vector<Alien*> aliensVector_;
 };
 
