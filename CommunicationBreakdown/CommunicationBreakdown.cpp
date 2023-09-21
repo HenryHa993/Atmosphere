@@ -42,90 +42,106 @@ int main()
 	cout << "";
 	cout << "";
 	cout << "";
-	cout << "";
+	cout << "Press ENTER to start";
+	cin.get();
 
+	cout << "\n\n\nYou awake and feel the cold metal floor below you. An industrial light in the corner of the room is flickering on and off.\n";
+	cout << "A gut-wrenching scream from somewhere in the northeast direction rings out and sends shivers down your spine\n";
+	cout << "Your head was hurt so you cannot remember where you are\n\nType <look> to take note of your surrounding and <bag> to check your inventory\n";
 
 	// Initialising the player
-	auto player = Player(5, vector<Item> {	});
+	auto player = Player(3, vector<Item> {	});
 
-	// Initialising the player inventory
-	// []() -> making a lambda function
-	player.add_item(Item("sensor", "This can detect mortal danger from far away", 1, [&]()
+	// Pass number to object function -> Feedback
+
+	player.add_item(Item("scrap", "An useless piece of metal scrap", 5, 0, []() {cout << "you atttempt to use the metal scrap"; return 0; }));
+
+	//#####// CREATING ROOMS //#####//	
+
+	// Room roomName = Room("Room Name", "text displayed on entering", alienBool, "text displayed if alien", "text displayed with sensor", behaviour lambda, items vector);
+
+	//Room("", "", "", 0, "", "", []() {return 0; }, empty_vector);
+	vector<Item> empty_vector;
+	Room kitchen = Room("The Kitchen (Residential Zone)", 
+		"In the kitchen of the ship. There is a dead chef and an alien parasite clasped to his torso. Water is overflowing from the sink onto the floor. You can't tell if the sound of water is the only noise your hearing in the room.", 
+		"", 0, "", "", []() {return 0; }, empty_vector);
+
+	//Room("", "", "", 0, "", "", []() {return 0; }, empty_vector);
+	Room messRoom = Room("Mess Room (Residential Zone)", 
+		"", 
+		"", 0, "", "", []() {return 0; }, empty_vector);
+
+	Room spaceGym = Room("Space Gym (Residential Zone)", 
+		"", 
+		"", 0, "", "", []() {return 0; }, empty_vector);
+
+	Room resiCorridor = Room("Corridor (Residential Zone)", 
+		"", 
+		"", 0, "", "", []() {return 0; }, empty_vector);
+
+	Room crewQuarters = Room("Crew Quarters (Residential Zone)", 
+		"", 
+		"", 0, "", "", []() {return 0; }, empty_vector);
+
+	Room office = Room("Commander's Office (Residential Zone)", 
+		"", 
+		"", 0, "", "", []() {return 0; }, empty_vector);
+
+	Room washRoom = Room("Wash Room (Residential Zone)", 
+		"", 
+		"", 0, "", "", []() {return 0; }, empty_vector);
+
+	Room equipmentBay = Room("Equipment Bay (Residential Zone)", 
+		"", 
+		"", 0, "", "", []() {return 0; }, empty_vector);
+
+	Room cargoBay = Room("Cargo Bay (Utility Zone)", 
+		"", 
+		"there are no signs of life here.",
+		0, "", "", []() {return 0; }, 
+		{Item("sensor", "This can detect mortal danger from far away", 1, 1, [&]()
 		{
-			cout << "you attempt to use the scanner\n" << endl;
+			cout << "you attempt to use the scanner" << endl;
 			return 0;
-		}));
-	player.add_item(Item("healthpack", "This item will restore 1 point of health", 1, [&]()
+		}),
+	Item("healthpack", "This item will restore 1 point of health", 1, 1, [&]()
 		{
 			player.change_health(1);
 			cout << "player health is now " << player.check_health() << endl << endl;
 			return 0;
-		}));
+		}) });
 
+	Room escapeBay = Room("Escape Pod Bay (Utility Zone)", 
+		"", 
+		"", 0, "", "", []() {return 0; }, empty_vector);
 
+	Room repairBay = Room("Repair Bay (Science Zone)", 
+		"", 
+		"", 0, "", "", []() {return 0; }, empty_vector);
 
+	Room sciCorridor = Room("Corridor (Science Zone)", 
+		"", 
+		"", 0, "", "", []() {return 0; }, empty_vector);
 
-	// Pass number to object function -> Feedback
+	Room labOne = Room("Science Lab 01 (Science Zone)", 
+		"", 
+		"", 0, "", "", []() {return 0; }, empty_vector);
 
+	Room labTwo = Room("Science Lab 02 (Science Zone)", 
+		"", 
+		"", 0, "", "", []() {return 0; }, empty_vector);
 
-	//#####// CREATING ROOMS //#####//	
+	Room monStation = Room("Monitoring Station (Science Zone)", 
+		"", "", 0, "", "", []() {return 0; }, empty_vector);
 
-	// Room roomName = Room("Room Name");
-	// roomName.setDescription("");
+	Room trashEject = Room("Trash Ejector (Science Zone)", 
+		"", "", 0, "", "", []() {return 0; }, empty_vector);
 
-	Room kitchen = Room("The Kitchen (Residential Zone)");
-	kitchen.setDescription("");
+	Room medBay = Room("Medical Bay (Science Zone)", 
+		"", "", 0, "", "", []() {return 0; }, empty_vector);
 
-	Room messRoom = Room("Mess Room (Residential Zone)");
-	messRoom.setDescription("");
-
-	Room spaceGym = Room("Space Gym (Residential Zone)");
-	spaceGym.setDescription("");
-
-	Room resiCorridor = Room("Corridor (Residential Zone)");
-	resiCorridor.setDescription("");
-
-	Room crewQuarters = Room("Crew Quarters (Residential Zone)");
-	crewQuarters.setDescription("");
-
-	Room office = Room("Commander's Office (Residential Zone)");
-	office.setDescription("");
-
-	Room washRoom = Room("Wash Room (Residential Zone)");
-	washRoom.setDescription("");
-
-	Room equipmentBay = Room("Equipment Bay (Residential Zone)");
-	equipmentBay.setDescription("");
-
-	Room cargoBay = Room("Cargo Bay (Utility Zone)");
-	cargoBay.setDescription("");
-
-	Room escapeBay = Room("Escape Pod Bay (Utility Zone)");
-	escapeBay.setDescription("");
-
-	Room repairBay = Room("Repair Bay (Science Zone)");
-	repairBay.setDescription("");
-
-	Room sciCorridor = Room("Corridor (Science Zone)");
-	sciCorridor.setDescription("");
-
-	Room labOne = Room("Science Lab 01 (Science Zone)");
-	labOne.setDescription("");
-
-	Room labTwo = Room("Science Lab 02 (Science Zone)");
-	labTwo.setDescription("");
-
-	Room monStation = Room("Monitoring Station (Science Zone)");
-	monStation.setDescription("");
-
-	Room trashEject = Room("Trash Ejector (Science Zone)");
-	trashEject.setDescription("");
-
-	Room medBay = Room("Medical Bay (Science Zone)");
-	medBay.setDescription("");
-
-	Room hazmat = Room("Hazardous Materials (Science Zone)");
-	hazmat.setDescription("");
+	Room hazmat = Room("Hazardous Materials (Science Zone)", 
+		"", "", 0, "", "", []() {return 0; }, empty_vector);
 
 
 	//#####// LINKING ROOMS //#####//
@@ -207,10 +223,10 @@ int main()
 	{
 		// ALIEN TESTING
 		auto current_time = std::chrono::high_resolution_clock::now();
-		std::cout << "Time till atmospheric entry: " << 360 - std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count() << " seconds.\n";
+		//std::cout << "Time till atmospheric entry: " << 360 - std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count() << " seconds.\n";
 
 		// MAIN COMMANDS CHECKING
-		std::cout << "> ";
+		std::cout << endl << "> ";
 		std::cin >> command;
 		//add commands here
 		if (command == "bag") 
@@ -218,10 +234,33 @@ int main()
 			player.check_inventory();
 		}
 		else if (command == "look") {
-			std::cout << "Looking around "
-				+ current->getName()
-				+ " you see " + current->getDescription()
+			std::cout << "\nLooking around the room, you see that you are in the "
+				+ current->get_name() + " "
+				+ current->look()
 				+ "\n";
+			auto linked_rooms = current->linked_rooms;
+			cout << endl;
+			for (auto const& x : linked_rooms)
+			{
+				std::cout << "To your " << x.first  // string (key)
+						  << " you see " 
+						  << x.second->get_name() // string's value 
+						  << std::endl;
+			}
+			cout << endl;
+			std::cout << "Looking for items you see ";
+			bool success = 0;
+			auto items = current->get_items();
+			for (auto it = items.begin(); it != items.end(); ++it)
+			{
+				auto item = *it;
+				std::cout << item.get_count() + " <" + item.get_command() + "> ";
+				success = 1;
+			}
+			if (success == 0) {
+				cout << "nothing.";
+			}
+		  cout << std::endl;
 		} else if (command == "health") {
 			cout << "your health is at: " << player.check_health() << endl << endl;
 		}
@@ -241,7 +280,30 @@ int main()
 					success = true;
 				}
 			}
-			if (success == true)
+			auto items = current->get_items();
+			int count = 0;
+			for (auto it = items.begin(); it != items.end();++it)
+			{
+				auto item = *it;
+				if (command == item.get_command())
+				{
+					if (item.pickup_)
+					{
+						cout << "You pick up the <" + item.get_command() + "> and add it to your bag\n"
+							+ "You can now use this item using <" + item.get_command() + ">\n";
+						player.add_item(item);
+						current->remove_item(count);
+						success = true;
+					} else 
+					{
+						item.behaviour();
+					}
+				}
+				//std::cout << item.get_count() + " <" + item.get_command() + "> ";
+				count++;
+			}
+
+			if (success)
 			{
 				continue;
 			} else
