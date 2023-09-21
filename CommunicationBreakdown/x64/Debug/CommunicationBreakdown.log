@@ -1,2 +1,27 @@
-﻿  Player.cpp
-  CommunicationBreakdown.vcxproj -> C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\x64\Debug\CommunicationBreakdown.exe
+﻿  Alien.cpp
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Room.h(25,19): error C2061: syntax error: identifier 'Alien'
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Room.h(31,14): error C2065: 'Alien': undeclared identifier
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Room.h(31,7): error C2923: 'std::vector': 'Alien' is not a valid template type argument for parameter '_Ty'
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Room.h(31,14): message : see declaration of 'Alien'
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Room.h(31,7): error C2976: 'std::vector': too few template arguments
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector(438,1): message : see declaration of 'std::vector'
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Alien.cpp(10,14): error C2660: 'Room::removeAlien': function does not take 1 arguments
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Room.h(25,7): message : see declaration of 'Room::removeAlien'
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Alien.cpp(10,14): message : while trying to match the argument list '(Alien *)'
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Alien.cpp(16,14): error C2660: 'Room::removeAlien': function does not take 1 arguments
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Room.h(25,7): message : see declaration of 'Room::removeAlien'
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Alien.cpp(16,14): message : while trying to match the argument list '(Alien *)'
+  CommunicationBreakdown.cpp
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Alien.h(9,8): error C2061: syntax error: identifier 'Room'
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Alien.h(10,18): error C2061: syntax error: identifier 'Room'
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Alien.h(14,7): error C3646: 'currentRoom_': unknown override specifier
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Alien.h(14,19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\CommunicationBreakdown.cpp(180,20): error C2440: '<function-style-cast>': cannot convert from 'Room' to 'Alien'
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\CommunicationBreakdown.cpp(180,20): message : No constructor could take the source type, or constructor overload resolution was ambiguous
+  Room.cpp
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Alien.h(9,8): error C2061: syntax error: identifier 'Room'
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Alien.h(10,18): error C2061: syntax error: identifier 'Room'
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Alien.h(14,7): error C3646: 'currentRoom_': unknown override specifier
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Alien.h(14,19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\CommunicationBreakdown\CommunicationBreakdown\Room.cpp(52,21): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...

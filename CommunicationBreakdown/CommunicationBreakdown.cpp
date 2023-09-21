@@ -2,12 +2,13 @@
 //
 
 #include <iostream>
+#include <functional>
+#include <vector>
 
 #include "Player.h"
-#include <functional>
 #include "Room.h"
 #include "Item.h"
-#include <vector>
+#include "Alien.h"
 
 int Banana()
 {
@@ -22,7 +23,7 @@ int main()
 
 	cout << "You awake and feel the cold metal floor below you. An industrial light in the corner of the room is flickering on and off.\n";
 	cout << "A gut-wrenching scream from somewhere in the northeast direction rings out and sends shivers down your spine\n";
-	cout << "Your head was hurt so you cannot remember what items you had on you\nType <inspect bag> to look in your inventory\n";
+	cout << "Your head was hurt so you cannot remember what items you had on you\nType <bag> to look in your inventory\n";
 
 	Player player1 = Player(5, vector<Item> {});
 	auto test = [&]() {return 0;};
@@ -174,6 +175,12 @@ int main()
 
 	Room* current = &cargoBay;
 	std::string command;
+
+	// Testing the aliens
+	Alien john = Alien(cargoBay);
+	std::cout << "cargo bay count" + cargoBay.alienCount();
+	std::cout << "";
+
 	do
 	{
 

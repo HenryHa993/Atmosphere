@@ -12,6 +12,7 @@ public:
 	Player();
 	Player(int health, std::vector<Item> inventory);
 	//inventory
+	std::vector<Item> inventory_;
 	std::string checkInventory();
 	void addItem(Item item);
 	void checkHealth();
@@ -19,6 +20,5 @@ public:
 	void changeHealth(int modifier);
 	void command(std::string command);
 private:
-	std::vector<Item> inventory_;
 	int health_;
 };
