@@ -29,12 +29,12 @@ int main()
 	// Initialising the player's inventory
 	// []() -> making a lambda function
 	Player player = Player(5, vector<Item> {
-		Item("Motion sensor", "This can detect mortal dangeaway\nTo use this item, type <sensor>", 1, test),
-			Item("Health Pack", "This item will restore 1 point of health\nTo use this item, type <health>", 1, [&]()
-				{
-					player.checkHealth();
-					return 0;
-				})/*,
+		Item("sensor", "This can detect mortal danger from far away\nTo use this item, type <sensor>", 1, test),
+		Item("health", "This item will restore 1 point of health\nTo use this item, type <health>", 1, [&]()
+			{
+				player.checkHealth();
+				return 0;
+			})/*,
 				Item("Torch", "This can illuminate a dark area\nTo use this item, type <torch>", 1, [](Player* p)
 				{
 					cout << "you use the torch to light the room";

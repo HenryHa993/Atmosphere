@@ -9,7 +9,7 @@ class Item
 {
 public:
 	Item();
-	Item(std::string name, std::string description, int count, std::function<int()> behaviour);
+	Item(std::string command, std::string description, int count, std::function<int()> behaviour);
 
 	std::string getName();
 	std::string getDescription();
