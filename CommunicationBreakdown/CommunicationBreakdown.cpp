@@ -173,7 +173,7 @@ int main()
 	std::string command;
 
 	// Testing the aliens
-	Alien john = Alien(cargoBay);
+	Alien john = Alien("This guy is bananas");
 	//std::cout << "cargo bay count" + cargoBay.alienCount();
 	std::cout << "";
 

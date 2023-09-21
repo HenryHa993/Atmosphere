@@ -32,23 +32,41 @@ void Room::setDescription(const std::string description)
 	description_ = description;
 }
 
-// Functions to do with aliens
+// Are all aliens dead?
+bool Room::areAliensDead()
+{
+	for (Alien alien : aliens_)
+	{
+		if (alien.isAlive())
+		{
+			return false;
+		}
+	}
 
-//void Room::removeAlien(Alien alien)
-//{
-//	aliens_.erase(std::remove(aliens_.begin(), aliens_.end(), alien), aliens_.end());
-//}
-//
-//
-//// If the room is occupied with aliens (not dead), then returns true
-//bool Room::isOccupied()
-//{
-//	return aliens_.empty() || areAliensDead();
-//}
-//
-//// Return number of live aliens occupying a room
-//int Room::alienCount()
-//{
-//	int len = aliens_.size();
-//	return len;
-//}
+	return true;
+}
+
+
+// If the room is occupied with aliens (not dead), then returns true
+bool Room::isOccupied()
+{
+	return aliens_.empty() || areAliensDead();
+}
+
+// Return number of live aliens occupying a room
+int Room::countAliens()
+{
+	//int len = aliens_.size();
+	//return len;
+	int count = 0;
+
+	for (Alien alien : aliens_)
+	{
+		if (alien.isAlive())
+		{
+			count++;
+		}
+	}
+
+	return count;
+}

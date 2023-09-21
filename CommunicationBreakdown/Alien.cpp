@@ -1,20 +1,27 @@
 #include "Alien.h"
 
-Alien::Alien(Room room)
+Alien::Alien(std::string description)
 {
-	currentRoom_ = room;
+	isAlive_ = true;
+	description_ = description;
 }
 
-void Alien::changeRoom(Room nextRoom)
+//void Alien::changeRoom(Room nextRoom)
+//{
+//	//currentRoom_.removeAlien(this);
+//	currentRoom_ = nextRoom;
+//}
+//
+//Room Alien::check_room()
+//{
+//	return currentRoom_;
+//}
+
+bool Alien::isAlive()
 {
-	//currentRoom_.removeAlien(this);
-	currentRoom_ = nextRoom;
+	return isAlive_;
 }
 
-Room Alien::check_room()
-{
-	return currentRoom_;
-}
 
 void Alien::Death()
 {
