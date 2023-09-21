@@ -7,20 +7,20 @@
 // ITEM SECTION
 
 // Players items with a tied function, quantity and desc
-Item::Item(std::string name, std::string description, int count, std::function<int()> behaviour) {
-	name_ = name;
+Item::Item(std::string command, std::string description, int count, std::function<int()> fn) {
+	command_ = command;
 	description_ = description;
 	count_ = count;
-	behaviour_ = behaviour;
+	behaviour = fn;
 }
 
 // Getters
-std::string Item::getName()
+std::string Item::get_command()
 {
-	return name_;
+	return command_;
 }
 
-std::string Item::getDescription()
+std::string Item::get_description()
 {
 	return description_;
 }
