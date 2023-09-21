@@ -9,11 +9,6 @@
 #include "Item.h"
 #include <vector>
 
-int Banana()
-{
-	return 0;
-}
-
 using namespace std;
 int main()
 {
@@ -22,26 +17,27 @@ int main()
 
 	cout << "You awake and feel the cold metal floor below you. An industrial light in the corner of the room is flickering on and off.\n";
 	cout << "A gut-wrenching scream from somewhere in the northeast direction rings out and sends shivers down your spine\n";
-	cout << "Your head was hurt so you cannot remember what items you had on you\nType <inspect bag> to look in your inventory\n";
+	cout << "Your head was hurt so you cannot remember what items you had on you\nType <bag> to look in your inventory and <health> to check your health status\n";
 
-	Player player1 = Player(5, vector<Item> {});
-	auto test = [&]() {return 0;};
-	// Initialising the player's inventory
+	// Initialising the player
+	auto player = Player(5, vector<Item> {	});
+
+	// Initialising the player inventory
 	// []() -> making a lambda function
-	Player player = Player(5, vector<Item> {
-		Item("sensor", "This can detect mortal danger from far away\nTo use this item, type <sensor>", 1, test),
-		Item("health", "This item will restore 1 point of health\nTo use this item, type <health>", 1, [&]()
-			{
-				player.checkHealth();
-				return 0;
-			})/*,
-				Item("Torch", "This can illuminate a dark area\nTo use this item, type <torch>", 1, [](Player* p)
-				{
-					cout << "you use the torch to light the room";
-					return 0;
-				}),
-				Item("Metal scrap", "A piece of metal scrap\nTo use this item, type <scrap>", 5, Banana)*/
-	});
+	player.add_item(Item("sensor", "This can detect mortal danger from far away", 1, [&]()
+		{
+			cout << "you attempt to use the scanner\n" << endl;
+			return 0;
+		}));
+	player.add_item(Item("healthpack", "This item will restore 1 point of health", 1, [&]()
+		{
+			player.change_health(1);
+			cout << "player health is now " << player.check_health() << endl << endl;
+			return 0;
+		}));
+
+
+
 
 	// Pass number to object function -> Feedback
 
@@ -176,21 +172,44 @@ int main()
 	std::string command;
 	do
 	{
-
-		std::cout << "Looking around "
-			+ current->getName()
-			+ " you see " + current->getDescription()
-			+ "\n";
 		std::cout << "> ";
 		std::cin >> command;
 		//add commands here
-		if (current->linked_rooms.find(command) != current->linked_rooms.end())
+		if (command == "bag") 
+		{
+			player.check_inventory();
+		}
+		else if (command == "look") {
+			std::cout << "Looking around "
+				+ current->getName()
+				+ " you see " + current->getDescription()
+				+ "\n";
+		} else if (command == "health") {
+			cout << "your health is at: " << player.check_health() << endl << endl;
+		}
+		else if (current->linked_rooms.find(command) != current->linked_rooms.end())
 		{
 			current = current->linked_rooms[command];
 		}
 		else // Add more commands via an else if
 		{
-			std::cout << "You can't go that way!\n";
+			bool success = false;
+			for (auto it = player.inventory.begin(); it < player.inventory.end(); ++it)
+			{
+				Item item = *it;
+				if (command == item.get_command())
+				{
+					item.behaviour();
+					success = true;
+				}
+			}
+			if (success == true)
+			{
+				continue;
+			} else
+			{
+				std::cout << "You shake your head in confusion\n";
+			}
 		}
 	} while (command != "exit");
 
