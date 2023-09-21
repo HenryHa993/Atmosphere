@@ -1,5 +1,7 @@
-﻿  AI_Manager.cpp
-C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\Atmosphere\CommunicationBreakdown\AI_Manager.cpp(4,1): error C2512: 'Alien': no appropriate default constructor available
-C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\Atmosphere\CommunicationBreakdown\Alien.h(6,7): message : see declaration of 'Alien'
-  Room.cpp
-  Generating Code...
+﻿  CommunicationBreakdown.cpp
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\Atmosphere\CommunicationBreakdown\CommunicationBreakdown.cpp(21,10): warning C4129: ' ': unrecognized character escape sequence
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\Atmosphere\CommunicationBreakdown\CommunicationBreakdown.cpp(23,10): warning C4129: '_': unrecognized character escape sequence
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\Atmosphere\CommunicationBreakdown\CommunicationBreakdown.cpp(23,10): warning C4129: ' ': unrecognized character escape sequence
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\Atmosphere\CommunicationBreakdown\CommunicationBreakdown.cpp(24,10): warning C4129: ' ': unrecognized character escape sequence
+C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\Atmosphere\CommunicationBreakdown\CommunicationBreakdown.cpp(25,10): warning C4129: '_': unrecognized character escape sequence
+  CommunicationBreakdown.vcxproj -> C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\Atmosphere\x64\Debug\CommunicationBreakdown.exe
