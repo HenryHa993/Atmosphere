@@ -11,11 +11,12 @@ public:
 	Item();
 	Item(std::string command, std::string description, int count, std::function<int()> behaviour);
 
-	std::string getName();
-	std::string getDescription();
+	std::function<int()> behaviour;
+
+	std::string get_command();
+	std::string get_description();
 private:
-	std::string name_;
+	std::string command_;
 	std::string description_;
 	int count_;
-	std::function<int()> behaviour_;
 };

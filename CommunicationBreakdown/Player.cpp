@@ -9,32 +9,32 @@
 Player::Player(int health, std::vector<Item> inventory)
 {
 	health_ = health;
-	inventory_ = inventory;
+	inventory = inventory;
 }
 
 // Lists all inventory items with their description
-std::string Player::checkInventory() {
-	std::cout << "You take a look in your bag and find some items" << std::endl;
-	for (std::vector<Item>::iterator it = inventory_.begin(); it < inventory_.end(); it++) {
+std::string Player::check_inventory() {
+	std::cout << "You take a look in your bag and find some items" << std::endl << std::endl;
+	for (auto it = inventory.begin(); it < inventory.end(); it++) {
 		Item item = *it;
-		std::cout << item.getName() << std::endl;
-		std::cout << item.getDescription() << std::endl;
+		std::cout << "<" << item.get_command() << ">" << std::endl;
+		std::cout << item.get_description() << std::endl << std::endl;
 	}
-	//ouput command success
+	//output command success
 	return " ";
 }
 
 // Adds an item to your inventory
-void Player::addItem(Item item) {
-	inventory_.push_back(item);
+void Player::add_item(Item item) {
+	inventory.push_back(item);
 }
 
 // Print health
-void Player::checkHealth() {
-	std::cout << health_;
+int Player::check_health() {
+	return health_;
 }
 // Change health
-void Player::changeHealth(int modifier) {
+void Player::change_health(int modifier) {
 	health_ += modifier;
 }
 
