@@ -2,12 +2,13 @@
 //
 
 #include <iostream>
+#include <functional>
+#include <vector>
 
 #include "Player.h"
-#include <functional>
 #include "Room.h"
 #include "Item.h"
-#include <vector>
+#include "Alien.h"
 
 using namespace std;
 int main()
@@ -170,6 +171,12 @@ int main()
 
 	Room* current = &cargoBay;
 	std::string command;
+
+	// Testing the aliens
+	Alien john = Alien(cargoBay);
+	//std::cout << "cargo bay count" + cargoBay.alienCount();
+	std::cout << "";
+
 	do
 	{
 		std::cout << "> ";
