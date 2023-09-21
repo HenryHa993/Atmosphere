@@ -10,8 +10,9 @@
 #include "Item.h"
 #include "Alien.h"
 
-int Banana()
+int check_alien(Room room)
 {
+	
 	return 0;
 }
 
@@ -178,7 +179,7 @@ int main()
 
 	// Testing the aliens
 	Alien john = Alien(cargoBay);
-	std::cout << "cargo bay count" + cargoBay.alienCount();
+	//std::cout << "cargo bay count" + cargoBay.alienCount();
 	std::cout << "";
 
 	do
