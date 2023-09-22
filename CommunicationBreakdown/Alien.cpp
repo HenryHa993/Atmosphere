@@ -4,6 +4,7 @@ Alien::Alien(std::string description)
 {
 	isAlive_ = true;
 	description_ = description;
+	moved = false;
 }
 
 //void Alien::changeRoom(Room nextRoom)
