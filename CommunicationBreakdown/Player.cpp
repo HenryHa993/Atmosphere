@@ -30,6 +30,17 @@ void Player::add_item(Item item) {
 	inventory.push_back(item);
 }
 
+bool Player::has_item(std::string command)
+{
+	for (auto it = inventory.begin(); it < inventory.end(); it++) {
+		Item item = *it;
+		if (item.get_command() == command) {
+			return true;
+		}
+	}
+	return false;
+}
+
 // Print health
 int Player::check_health() {
 	return health_;

@@ -13,6 +13,7 @@ public:
 	Player(int health, std::vector<Item> inventory);
 	//inventory
 	std::string check_inventory();
+	bool has_item(std::string command);
 	std::vector<Item> inventory;
 	void add_item(Item item);
 	int check_health();
