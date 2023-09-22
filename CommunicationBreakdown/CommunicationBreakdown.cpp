@@ -1,4 +1,4 @@
-// OOP Game.cpp : This file contains the 'main' function. Program execution begins and ends there.
+﻿// OOP Game.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include <iostream>
@@ -62,46 +62,57 @@ int main()
 
 	//Room("", "", "", 0, "", "", []() {return 0; }, empty_vector);
 	vector<Item> empty_vector;
-	Room kitchen = Room("The Kitchen (Residential Zone)", 
-		"You are in the kitchen. You cannot sense any movement. There is a dead chef and an alien parasite clasped to his torso. Water is overflowing from the sink onto the floor. Is it just the sound of water youre hearing, you cant be certain. You move quietly.\n", 
-		"", 0, "", "", []() {return 0; }, empty_vector);
+	Room kitchen = Room("The Kitchen (Residential Zone)",
+		"The Kitchen is a mess. You cannot sense any movement.\nThe chef's body is lying in the corner with something alien clasped to his torso.\nWater is overflowing from the sink onto the floor. Is the sound of water masking any other sounds?\nyou're not sure, you might be hearing things...\n\n",
+		"", 0, "An alien is sat on the metal worksurface. It jumps at you and bites down hard on your right forearm. You wrestle you arm free, your overall arm remains in the jaws of the alien.",
+		"", []() {return 0; }, empty_vector);
 
 	//Room("", "", "", 0, "", "", []() {return 0; }, empty_vector);
 	Room messRoom = Room("Mess Room (Residential Zone)", 
-		"You are in the Mess Room. The well worn sofas which have been moulded by crew members are now covered in their entrails. The cerebral reality connectors lie on the floor, you wish you could spend some time at your favourite virtual holiday destination.\n", 
+		"You are in the Mess Room. The well worn sofas which have been moulded by crew members are now covered in their entrails.\nIt looks like a desperate struggle took place here. You notice that the cerebral reality connectors lie on the floor.\nYou wish you could spend some time at your favourite virtual holiday destination.\n\n", 
 		"", 0, "", "", []() {return 0; }, empty_vector);
 
 	Room spaceGym = Room("Space Gym (Residential Zone)", 
-		"You are in the space gym. Lights torn from the ceiling create a strobe like effect. Slick pools of black liquid on the floor stick to your boots. Space training gym equipment is smashed and strewn around the room. A pair of hands remain attached to a bar bell via weightlifting hook straps.\n", 
-		"", 0, "", "", []() {return 0; }, empty_vector);
+		"The Space Gym is eerily quiet. Exercise equipment sits unused, and holographic workout routines play on repeat.\nLights torn from the ceiling create a strobe like effect. Slick pools of black liquid on the floor stick to your boots.\nA pair of hands remain attached to a barbell, severed at the bone.\n\n", 
+		"", 0, "As you enter you hear a raspy breath, it isnt a human. In the shadows you see the head of an alien turn and sniff the air. It catches your scent, it twists around and releases 2 bone darts from its spine. You hear two thuds, one dart is in the wall behind you the other is embeded in your spleen.\n", 
+		"", []() {return 0; }, {
+		});
 
 	Room resiCorridor = Room("Corridor (Residential Zone)", 
-		"You are in the residential corridor. Steel portal frames are at regular intervals down the corridor. No one has owned up to the graffiti yet, you have your suspicions though. \n", 
-		"", 0, "", "", []() {return 0; }, empty_vector);
+		"The residential corridor stretches on seemingly forever.\nThe walls are scuffed, and no one ever did own up to the graffiti, you have your suspicions though.\n\n", 
+		"", 0, "The corridor ceiling grid crashes down, an alien drops from the void above. Screeching wildly, it slashes its long claws across your chest. The attack knocks you to the ground, you groan and scramble to your feet once more.", 
+		"", []() {return 0; }, empty_vector);
 
 	Room crewQuarters = Room("Crew Quarters (Residential Zone)", 
-		"You are in the crew quarters, there are 6 beds. 2 of the beds are unmade. Wardrobe doors are left open, clothes are left strewn on the floor. Your shipmates must have jumped into action upon hearing the containment alarm.\n", 
-		"", 0, "", "", []() {return 0; }, empty_vector);
+		"Crew Quarters are personal and cluttered. Beds are unmade. Wardrobe doors are left open, belongings are left,\nscattered on the floor. Your shipmates must have jumped into action upon hearing the alarms.\n\n", 
+		"", 0, "", "", []() {return 0; }, {
+		Item("map", "shows the lvel!\n", 1, 0, [&]() { return 0; }),
+		});
 
 	Room office = Room("Commander's Office (Residential Zone)", 
-		"You are in the Commanders Office. Commander white is lying face down on his desk in his blood stained uniform. At least he had a quick death, Commander White was known for his lightning fast reactions. Whatever killed him must have attacked so fast he was unable to get out of his chair. \n", 
-		"", 0, "", "", []() {return 0; }, empty_vector);
+		"The Commander's Office is spacious and imposing.\nCommander white is lying face down on his imposingly large desk, in his blood stained uniform.\nHopefully he had a quick death. He had lightning fast reactions,\nso whatever killed him must have been even quicker.\n\n", 
+		"", 0, "", "", []() {return 0; }, {
+	Item("robotic_arm", "You inspect the wall mounted loading arm closely, the hydraulics are shot, you cant believe it this thing was bulletproof!\n", 1, 0, [&]() {return 0; }),
+	Item("robotic_arm", "You inspect the wall mounted loading arm closely, the hydraulics are shot, you cant believe it this thing was bulletproof!\n", 1, 0, [&]() {return 0; }),
+		});
 
 	Room washRoom = Room("Wash Room (Residential Zone)", 
-		"You are in the Wash Room. All of the surfaces are a lime green coloured anti-microbial surface. One of the 5 water recycling shower cubicles glazed doors are covered in blood. You don't feel like opening that cubicle.\n", 
-		"", 0, "", "", []() {return 0; }, empty_vector);
+		"The Wash Room is sterile and cold. All of the surfaces are a lime green coloured anti-microbial surface.\nThe glazed door of one of the water recycling shower cubicles is covered in blood.\nYou don't feel like opening that cubicle.\n\n", 
+		"", 0, "", "", []() {return 0; }, {
+	Item("robotic_arm", "You inspect the wall mounted loading arm closely, the hydraulics are shot, you cant believe it this thing was bulletproof!\n", 1, 0, [&]() {return 0; }),
+		});
 
 	Room equipmentBay = Room("Equipment Bay (Residential Zone)",
-		"You are in the equipment bay. The crews space suits hang from the walls. One of the suits have fallen on the floor. As you look closer you realise it contains crew member Eddy minus his head.\n",
+		"The Equipment Bay is stocked with tools and supplies. Space suits hang from the walls, another has fallen on the floor.\nAs you look closer you realise it contains what remains of Eddy...\nPoor son of a bitch...\n\n",
 		"", 0, "", "", []() {return 0; }, { Item("purplekeycard", "Gives you access to the escape pod bay", 1, 1, [&]()
 		{
 			return 0;
 		}) });
 
 	Room cargoBay = Room("Cargo Bay (Utility Zone)", 
-		"", 
+		"The Cargo Bay is cavernous, filled with towering crates and containers.\nThe warning light still flickers overhead, casting a faint red light and eerie shadows.\nThe air is stale, and you can't shake the feeling that you're being watched.\n\n", 
 		"there are no signs of life here.",
-		0, "", "", []() {return 0; }, 
+		1, "An alien jumps from the high level gantry. It tries to grab you, you step backwards. The aliens long claws slashe your left left. You whimper and hop out of its reach.\n", "", []() {return 0; }, 
 		{Item("sensor", "This can detect mortal danger from far away", 1, 1, [&]()
 		{
 			cout << "you attempt to use the scanner" << endl;
@@ -112,7 +123,12 @@ int main()
 			player.change_health(1);
 			cout << "player health is now " << player.check_health() << endl << endl;
 			return 0;
-		})});
+		}),
+		
+	Item("robotic_arm", "You inspect the wall mounted loading arm closely, the hydraulics are shot, you cant believe it this thing was bulletproof!\n", 1, 0, [&]() {return 0; }),
+	Item("maintenance_bot_leg", "You look at the leg and think where's the rest of ARNY? This means more cleaning for me!\n", 1, 0, [&]() {return 0; }),
+			Item("empty_mineral_container", "You inspect the mineral container, it is empty.\n", 1, 0, [&]() {return 0; }) }
+		);
 //,
 //	Item("keycardscanner", "This item will allow you to access the Escape Pod Bay", 1, 0, [&]()
 //		{
@@ -121,38 +137,59 @@ int main()
 //		})
 
 	Room escapeBay = Room("Escape Pod Bay (Utility Zone)", 
-		"You pass through the door into the escape pod bay. The only remaining escape pod control pad is flashing. A sense of relief floods over you.", 
-		"", 0, "", "", [&]() {if (player.has_item("purplekeycard")) { return 0; } else { cout << "you do not have correct keycard to access this room\n"; return 1; } }, empty_vector);
+		"You pass through the door into the escape pod bay.\nThe only remaining escape pod control pad is flashing. A sense of relief floods over you.\n\n", 
+		"", 0, "", "", [&]() {if (player.has_item("purplekeycard")) { return 0; } else { cout << "you do not have correct keycard to access this room\n"; return 1; } }, 
+		{
+	Item("robotic_arm", "You inspect the wall mounted loading arm closely, the hydraulics are shot, you cant believe it this thing was bulletproof!\n", 1, 0, [&]() {return 0; }),
+	Item("robotic_arm", "You inspect the wall mounted loading arm closely, the hydraulics are shot, you cant believe it this thing was bulletproof!\n", 1, 0, [&]() {return 0; }),
+	Item("robotic_arm", "You inspect the wall mounted loading arm closely, the hydraulics are shot, you cant believe it this thing was bulletproof!\n", 1, 0, [&]() {return 0; }),
+		});
 
 	Room repairBay = Room("Repair Bay (Science Zone)", 
-		"You are in the repair bay. It contains a stainless steel workbench, there is a hammer on the tool rack and a repair engineer lies dead in the corner\n", 
-		"", 0, "", "", []() {return 0; }, {});
+		"The Repair Bay is cluttered with tools, machinery, and partially dismantled equipment.\nBroken robots lie in disrepair. On the far wall, a stainless steel workbench.\nThere is a hammer on the tool rack and a repair engineer lies dead in the corner.\nThere are various wall mounted robotic tools and 3d printers to assist in fixing\nmost things you need on a space station.\nMost of which are now damaged.Several lockers are left open, their doors ripped from the hinges.\nOne locker is in good order, but locked tight.\n\n", 
+		"", 0, "", "", []() {return 0; }, {
+	Item("robotic_arm", "You inspect the wall mounted loading arm closely, the hydraulics are shot, you cant believe it this thing was bulletproof!\n", 1, 0, [&]() {return 0; }),
+	Item("robotic_arm", "You inspect the wall mounted loading arm closely, the hydraulics are shot, you cant believe it this thing was bulletproof!\n", 1, 0, [&]() {return 0; }),
+		});
 
 	Room sciCorridor = Room("Corridor (Science Zone)", 
-		"You are in the science corridor. It is a stark space with steel portal frames at regular intervals. There is a ceiling grid over for access to service ducts. The science labs and medical bays are handprint access controlled.\n", 
+		"The Science Corridor is lined with laboratories, their doors sealed.\nThe once-bustling hub of research is now silent. Equipment hums faintly in the stillness.\nAll the sealed doors are handprint access controlled.\n\n", 
 		"", 0, "", "", []() {return 0; }, empty_vector);
 
 	Room labOne = Room("Science Lab 01 (Science Zone)", 
-		"You are in the Science Lab 01. To the left of you there is a nanotech workstation. \n", 
+		"Lab 01 is in disarray. Broken vials and shattered glassware are scattered across the floor. The whiteboards \n are covered in a mixture of red and black fluid.\n\n", 
 		"", 0, "", "", []() {return 0; }, empty_vector);
 
 	Room labTwo = Room("Science Lab 02 (Science Zone)", 
-		"You are in the science lab 02\n", 
-		"", 0, "", "", []() {return 0; }, empty_vector);
+		"Lab 02 is completely decimated, even compared to the rest of what you've seen on the station so far. The \n carnage you're seeing fills you with dread. The floors are covered in glass, blood and torn lab coats. There's some sort of containment chamber in the center of the room... Well, what remains of one... Something was being kept in there. And it clearly wanted to get out... \n\n", 
+		"", 0, "", "", []() {return 0; }, {
+	Item("robotic_arm", "You inspect the wall mounted loading arm closely, the hydraulics are shot, you cant believe it this thing was bulletproof!\n", 1, 0, [&]() {return 0; }),
+		});
 
 	Room monStation = Room("Monitoring Station (Science Zone)", 
-		"You are in the monitoring station. The walls are covered in flickering displays. The mainframe is still just about working, but damage to wiring elsewhere in the station is making it janky. The orbit management system shows typical orbit, the stations current positio and trajectory into the gas giant. Your stomach churns.\n", 
-		"", 0, "", "", []() {return 0; }, empty_vector);
+		"The Monitoring Station is a room of screens and consoles. Many screens display static or errors. The few that \n function show unsettling images and data you'd rather not see. Damage to some of the consoles is extensive. The orbit \n management system shows the stations current position and trajectory into the Saturn's atmosphere. Your stomach churns.\n\n", 
+		"", 0, "", "", []() {return 0; }, {
+		});
 
 	Room trashEject = Room("Trash Ejector (Science Zone)", 
-		"You are in the trash ejector room. The room smells bad a mixture between rotten synthetic food and cleaning chemicals. There is a huge bulkhead door on the wall opposite you, behind you are an array of vacuum pressure jets, you remember these are what jet the trash out into space.\n", 
+		"The Trash Ejector is a cold, metallic room filled with the clunking of machinery. The room smells bad a mixture \n between rotten synthetic food and cleaning chemicals. There is a huge bulkhead door on the wall opposite you, \n behind you are an array of vacuum pressure jets, you remember that these are what shoots the trash out into space.\n\n", 
 		"", 0, "", "", []() {return 0; }, empty_vector);
 
 	Room medBay = Room("Medical Bay (Science Zone)", 
-		"", "", 0, "", "", []() {return 0; }, empty_vector);
+		"You are in the medical bay. Empty beds and scattered medical equipment suggest a hurried evacuation. There's \n a row of stasis pods. One, of which is set to hyper sleep. A bloody handprint stains the inside of the glass.\n\n", 
+		"", 0, "", "", []() {return 0; }, {
+	Item("a_blood_covered_pelvis", "You guess it's a crew members, but you can't fathom who's it might have belonged to or where the rest of them might be?\n", 1, 0, [&]() {return 0; }),
+	Item("stasis_pods", "You look at the stasis pod, it seems to be working?\n", 1, 0, [&]() {return 0; }),
+	Item("health_kit", "You examine the health kit, this is your lucky day!\n", 1, 0, [&]() {return 0; }),
+		});
 
 	Room hazmat = Room("Hazardous Materials (Science Zone)", 
-		"You are in Hazardous Materials. Alarms are sounding on the holo screens 'Stage 3 containment failure. Atmospheric self destruct sequence initiated'.\n", "", 0, "", "", []() {return 0; }, empty_vector);
+		"You are in Hazardous Materials. Alarms are sounding and the holo screens flash: 'FAIL-SAFE 04. \n ATMOSPHERIC SELF DESTRUCT SEQUENCE INITIATED'... Fuck... Several of the biological containment vessels are empty \n and open. Gooey footprints on the floor show that something entered this room and \n then left into the station.\n\n", 
+		"", 0, "", "", []() {return 0; }, 
+		{
+	Item("hazmat_suit", "You inspect the suit it has a tear in it. But hey youre probably contaiminated with spors or something already", 1, 0, [&]() {return 0; }),
+	Item("biological_samples", "You look at the biological samples, they are sticky ewww!", 1, 0, [&]() {return 0; })});
+//	Item("Axe", "That looks sharp... I wonder if I can take out an alien with this bad boy!", 1, 0, [&]() {return 0; })	});
 
 	std::vector<Room*> allRooms = {
 	&kitchen,
@@ -261,7 +298,7 @@ int main()
 	do
 	{
 		// ALIEN TESTING
-		auto current_time = std::chrono::high_resolution_clock::now();
+		//auto current_time = std::chrono::high_resolution_clock::now();
 		//std::cout << "Time till atmospheric entry: " << 360 - std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count() << " seconds.\n";
 		//std::cout << "Testing isAdjacent: " << cargoBay.isAdjacent(&equipmentBay);
 		//cargoBay.shuffleAliens(current);
