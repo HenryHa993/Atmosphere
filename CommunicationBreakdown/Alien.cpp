@@ -7,25 +7,14 @@ Alien::Alien(std::string description)
 	moved = false;
 }
 
-//void Alien::changeRoom(Room nextRoom)
-//{
-//	//currentRoom_.removeAlien(this);
-//	currentRoom_ = nextRoom;
-//}
-//
-//Room Alien::check_room()
-//{
-//	return currentRoom_;
-//}
-
+// Is the alien alive?
 bool Alien::isAlive()
 {
 	return isAlive_;
 }
 
-
+// Kill alien
 void Alien::Death()
 {
-	//currentRoom_.removeAlien(this);
 	isAlive_ = false;
 }

@@ -25,7 +25,6 @@ public:
 	void setName(const std::string name);
 	void setDescription(const std::string description);
 
-	//bool areAliensDead();
 	bool isOccupied();
 	void addAlien(Alien* alien);
 	//int countAliens();
