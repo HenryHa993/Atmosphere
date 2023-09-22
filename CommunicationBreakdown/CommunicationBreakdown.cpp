@@ -54,7 +54,7 @@ int main()
 
 	// Pass number to object function -> Feedback
 
-	player.add_item(Item("scrap", "An useless piece of metal scrap", 5, 0, []() {cout << "you atttempt to use the metal scrap"; return 0; }));
+	player.add_item(Item("scrap", "A useless piece of metal scrap", 5, 0, []() {cout << "you atttempt to use the metal scrap"; return 0; }));
 
 	//#####// CREATING ROOMS //#####//	
 
@@ -63,37 +63,40 @@ int main()
 	//Room("", "", "", 0, "", "", []() {return 0; }, empty_vector);
 	vector<Item> empty_vector;
 	Room kitchen = Room("The Kitchen (Residential Zone)", 
-		"In the kitchen of the ship. There is a dead chef and an alien parasite clasped to his torso. Water is overflowing from the sink onto the floor. You can't tell if the sound of water is the only noise your hearing in the room.", 
+		"You are in the kitchen. You cannot sense any movement. There is a dead chef and an alien parasite clasped to his torso. Water is overflowing from the sink onto the floor. Is it just the sound of water youre hearing, you cant be certain. You move quietly.\n", 
 		"", 0, "", "", []() {return 0; }, empty_vector);
 
 	//Room("", "", "", 0, "", "", []() {return 0; }, empty_vector);
 	Room messRoom = Room("Mess Room (Residential Zone)", 
-		"", 
+		"You are in the Mess Room. The well worn sofas which have been moulded by crew members are now covered in their entrails. The cerebral reality connectors lie on the floor, you wish you could spend some time at your favourite virtual holiday destination.\n", 
 		"", 0, "", "", []() {return 0; }, empty_vector);
 
 	Room spaceGym = Room("Space Gym (Residential Zone)", 
-		"", 
+		"You are in the space gym. Lights torn from the ceiling create a strobe like effect. Slick pools of black liquid on the floor stick to your boots. Space training gym equipment is smashed and strewn around the room. A pair of hands remain attached to a bar bell via weightlifting hook straps.\n", 
 		"", 0, "", "", []() {return 0; }, empty_vector);
 
 	Room resiCorridor = Room("Corridor (Residential Zone)", 
-		"", 
+		"You are in the residential corridor. Steel portal frames are at regular intervals down the corridor. No one has owned up to the graffiti yet, you have your suspicions though. \n", 
 		"", 0, "", "", []() {return 0; }, empty_vector);
 
 	Room crewQuarters = Room("Crew Quarters (Residential Zone)", 
-		"", 
+		"You are in the crew quarters, there are 6 beds. 2 of the beds are unmade. Wardrobe doors are left open, clothes are left strewn on the floor. Your shipmates must have jumped into action upon hearing the containment alarm.\n", 
 		"", 0, "", "", []() {return 0; }, empty_vector);
 
 	Room office = Room("Commander's Office (Residential Zone)", 
-		"", 
+		"You are in the Commanders Office. Commander white is lying face down on his desk in his blood stained uniform. At least he had a quick death, Commander White was known for his lightning fast reactions. Whatever killed him must have attacked so fast he was unable to get out of his chair. \n", 
 		"", 0, "", "", []() {return 0; }, empty_vector);
 
 	Room washRoom = Room("Wash Room (Residential Zone)", 
-		"", 
+		"You are in the Wash Room. All of the surfaces are a lime green coloured anti-microbial surface. One of the 5 water recycling shower cubicles glazed doors are covered in blood. You don't feel like opening that cubicle.\n", 
 		"", 0, "", "", []() {return 0; }, empty_vector);
 
-	Room equipmentBay = Room("Equipment Bay (Residential Zone)", 
-		"", 
-		"", 0, "", "", []() {return 0; }, empty_vector);
+	Room equipmentBay = Room("Equipment Bay (Residential Zone)",
+		"You are in the equipment bay. The crews space suits hang from the walls. One of the suits have fallen on the floor. As you look closer you realise it contains crew member Eddy minus his head.\n",
+		"", 0, "", "", []() {return 0; }, { Item("purplekeycard", "Gives you access to the escape pod bay", 1, 1, [&]()
+		{
+			return 0;
+		}) });
 
 	Room cargoBay = Room("Cargo Bay (Utility Zone)", 
 		"", 
@@ -109,39 +112,47 @@ int main()
 			player.change_health(1);
 			cout << "player health is now " << player.check_health() << endl << endl;
 			return 0;
-		}) });
+		})});
+//,
+//	Item("keycardscanner", "This item will allow you to access the Escape Pod Bay", 1, 0, [&]()
+//		{
+//			cout << "You attempt to use the key card scanner" << endl << endl;
+//			return 0;
+//		})
 
 	Room escapeBay = Room("Escape Pod Bay (Utility Zone)", 
-		"", 
-		"", 0, "", "", []() {return 0; }, empty_vector);
+		"You pass through the door into the escape pod bay. The only remaining escape pod control pad is flashing. A sense of relief floods over you.", 
+		"", 0, "", "", [&]() {if (player.has_item("purplekeycard")) { return 0; } else { cout << "you do not have correct keycard to access this room\n"; return 1; } }, empty_vector);
 
 	Room repairBay = Room("Repair Bay (Science Zone)", 
-		"", 
-		"", 0, "", "", []() {return 0; }, empty_vector);
+		"You are in the repair bay. It contains a stainless steel workbench, there is a hammer on the tool rack and a repair engineer lies dead in the corner\n", 
+		"", 0, "", "", []() {return 0; }, {});
 
 	Room sciCorridor = Room("Corridor (Science Zone)", 
-		"", 
+		"You are in the science corridor. It is a stark space with steel portal frames at regular intervals. There is a ceiling grid over for access to service ducts. The science labs and medical bays are handprint access controlled.\n", 
 		"", 0, "", "", []() {return 0; }, empty_vector);
 
 	Room labOne = Room("Science Lab 01 (Science Zone)", 
-		"", 
+		"You are in the Science Lab 01. To the left of you there is a nanotech workstation. \n", 
 		"", 0, "", "", []() {return 0; }, empty_vector);
 
 	Room labTwo = Room("Science Lab 02 (Science Zone)", 
-		"", 
+		"You are in the science lab 02\n", 
 		"", 0, "", "", []() {return 0; }, empty_vector);
 
 	Room monStation = Room("Monitoring Station (Science Zone)", 
-		"", "", 0, "", "", []() {return 0; }, empty_vector);
+		"You are in the monitoring station. The walls are covered in flickering displays. The mainframe is still just about working, but damage to wiring elsewhere in the station is making it janky. The orbit management system shows typical orbit, the stations current positio and trajectory into the gas giant. Your stomach churns.\n", 
+		"", 0, "", "", []() {return 0; }, empty_vector);
 
 	Room trashEject = Room("Trash Ejector (Science Zone)", 
-		"", "", 0, "", "", []() {return 0; }, empty_vector);
+		"You are in the trash ejector room. The room smells bad a mixture between rotten synthetic food and cleaning chemicals. There is a huge bulkhead door on the wall opposite you, behind you are an array of vacuum pressure jets, you remember these are what jet the trash out into space.\n", 
+		"", 0, "", "", []() {return 0; }, empty_vector);
 
 	Room medBay = Room("Medical Bay (Science Zone)", 
 		"", "", 0, "", "", []() {return 0; }, empty_vector);
 
 	Room hazmat = Room("Hazardous Materials (Science Zone)", 
-		"", "", 0, "", "", []() {return 0; }, empty_vector);
+		"You are in Hazardous Materials. Alarms are sounding on the holo screens 'Stage 3 containment failure. Atmospheric self destruct sequence initiated'.\n", "", 0, "", "", []() {return 0; }, empty_vector);
 
 	std::vector<Room*> allRooms = {
 	&kitchen,
@@ -301,7 +312,11 @@ int main()
 		}
 		else if (current->linked_rooms.find(command) != current->linked_rooms.end())
 		{
-			current = current->linked_rooms[command];
+			if (current->linked_rooms[command]->behaviour_() == 0)
+			{
+				current = current->linked_rooms[command];
+				cout << current->get_description();
+			}
 		}
 		else // Add more commands via an else if
 		{
@@ -331,7 +346,9 @@ int main()
 						success = true;
 					} else 
 					{
+						cout << item.get_description() << endl;
 						item.behaviour();
+						success = true;
 					}
 				}
 				//std::cout << item.get_count() + " <" + item.get_command() + "> ";

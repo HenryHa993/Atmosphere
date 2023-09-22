@@ -14,6 +14,8 @@ public:
 	Room();
 	Room(std::string name, std::string description, std::string look, bool aliens, std::string aliens_text, std::string sensor, std::function<int()> behaviour, std::vector<Item> items);
 
+	std::function<int()> behaviour_;
+
 	std::map <std::string, Room*> linked_rooms = {};
 
 	std::string get_name();
@@ -43,7 +45,6 @@ private:
 
 	bool aliens_;
 	std::string aliens_text_;
-	std::function<int()> behaviour_;
 	std::vector<Item> items_;
 	
 	std::vector<Alien*> aliensVector_;
