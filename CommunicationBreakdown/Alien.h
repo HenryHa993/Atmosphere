@@ -11,6 +11,7 @@ public:
 	void Death();
 	bool isAlive();
 	//Room check_room()
+	bool moved;
 ;
 private:
 	bool isAlive_; // Alive status

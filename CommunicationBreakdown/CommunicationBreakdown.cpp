@@ -237,6 +237,8 @@ int main()
 	Alien john = Alien("This guy is bananas");
 	cargoBay.addAlien(&john);
 
+	std::vector<Alien*> allAliens = {&john};
+
 	// INITIALISE MOVE COUNTERS FOR ALIEN MOVEMENT
 	int playerMoves = 0;
 	int moveInterval = 3;
@@ -356,7 +358,14 @@ int main()
 			for (Room* room : allRooms)
 			{
 				room->shuffleAliens(current);
+				// just moved false
 			}
+		}
+
+		// Reset moved flag on aliens
+		for (Alien* alien : allAliens)
+		{
+			alien->moved = false;
 		}
 
 	}

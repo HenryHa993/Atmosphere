@@ -32,7 +32,7 @@ public:
 	//void removeAlien(Alien alien);
 
 	std::string randomDirection();
-	void moveAlien(Room* currentRoom);
+	void moveAlien(Room* currentRoom, Alien* alien);
 	bool isAdjacent(Room* room); // Check if room is adjacent to another
 	void shuffleAliens(Room* currentRoom);
 

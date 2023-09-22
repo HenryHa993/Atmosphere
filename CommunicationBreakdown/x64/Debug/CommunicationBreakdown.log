@@ -1,7 +1,2 @@
-﻿  CommunicationBreakdown.cpp
-C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\Atmosphere\CommunicationBreakdown\CommunicationBreakdown.cpp(21,10): warning C4129: ' ': unrecognized character escape sequence
-C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\Atmosphere\CommunicationBreakdown\CommunicationBreakdown.cpp(23,10): warning C4129: '_': unrecognized character escape sequence
-C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\Atmosphere\CommunicationBreakdown\CommunicationBreakdown.cpp(23,10): warning C4129: ' ': unrecognized character escape sequence
-C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\Atmosphere\CommunicationBreakdown\CommunicationBreakdown.cpp(24,10): warning C4129: ' ': unrecognized character escape sequence
-C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\Atmosphere\CommunicationBreakdown\CommunicationBreakdown.cpp(25,10): warning C4129: '_': unrecognized character escape sequence
+﻿  Room.cpp
   CommunicationBreakdown.vcxproj -> C:\Users\henry\Projects\The Developer Academy\2 C++ Basics\Atmosphere\x64\Debug\CommunicationBreakdown.exe
