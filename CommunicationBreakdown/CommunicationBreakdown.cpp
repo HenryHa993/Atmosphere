@@ -234,6 +234,7 @@ int main()
 	std::string command;
 
 	// INITIALISE ALIEN
+	// Add aliens here if you want more than one
 	Alien john = Alien("This guy is bananas");
 	cargoBay.addAlien(&john);
 
@@ -241,7 +242,7 @@ int main()
 
 	// INITIALISE MOVE COUNTERS FOR ALIEN MOVEMENT
 	int playerMoves = 0;
-	int moveInterval = 3;
+	int moveInterval = 2;
 	int alienMoves = 0;
 
 	// TIMER INITIALISATION

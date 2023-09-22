@@ -114,25 +114,20 @@ std::string Room::randomDirection()
 	{
 	case 0:
 		return "north";
-		break;
 	case 1:
 		return "east";
-		break;
 	case 2:
 		return "south";
-		break;
 	case 3:
 		return "west";
-		break;
 	default:
 		return "north";
-		break;
 	}
 }
 
 void Room::moveAlien(Room* room, Alien* alien) // Return std::vector<Alien*> ?
 {
-	std::cout << "Moving alien from " << name_ << " to " << room->name_ << ".\n";
+	std::cout << "Moving alien from " << name_;// << " to " << room->name_ << ".\n";
 
 	// Just moved true
 	alien->moved = true;
@@ -147,9 +142,6 @@ void Room::moveAlien(Room* room, Alien* alien) // Return std::vector<Alien*> ?
 	// Put alien in new room
 	room->aliensVector_.push_back(alien);
 
-	// Would have to change this to use temp vectors
-	//room->aliensVector_.push_back(aliensVector_.back());
-	//aliensVector_.pop_back();
 }
 
 void Room::shuffleAliens(Room* currentRoom)
@@ -162,11 +154,6 @@ void Room::shuffleAliens(Room* currentRoom)
 
 	for (Alien* alien : aliensVector_)
 	{
-		//std::vector<Alien*>::iterator position = std::find(aliensVector_.begin(), aliensVector_.end(), alien);
-		//if (position != aliensVector_.end())
-		//	aliensVector_.erase(position);
-
-		//std::cout << "Alien was here and is now deleted.\n";
 
 		//Check just moved
 
@@ -179,18 +166,19 @@ void Room::shuffleAliens(Room* currentRoom)
 		// Not moved, so move it
 		if (isAdjacent(currentRoom))
 		{
-			// This can be put into a function
 			moveAlien(currentRoom, alien);
 		}
 		else
 		{
 			// Randomised alien placements
-			// Probably put this in a function to redo
 			std::string movement;
 			movement = randomDirection();
 
-			while (linked_rooms.find(movement) == linked_rooms.end())
+			// Does not work
+			//std::cout << "CHECK : " << (linked_rooms.find(movement) == linked_rooms.end()) << "\n";
+			while (linked_rooms[movement] == nullptr)//!isAdjacent(linked_rooms[movement]))// linked_rooms.find(movement) == linked_rooms.end())
 			{
+				std::cout << "Generated new movement: " << movement << "\n";
 				movement = randomDirection();
 			}
 
