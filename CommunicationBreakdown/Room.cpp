@@ -127,7 +127,7 @@ std::string Room::randomDirection()
 
 void Room::moveAlien(Room* room, Alien* alien) // Return std::vector<Alien*> ?
 {
-	std::cout << "Moving alien from " << name_;// << " to " << room->name_ << ".\n";
+	//std::cout << "Moving alien from " << name_;// << " to " << room->name_ << ".\n";
 
 	// Just moved true
 	alien->moved = true;
@@ -142,13 +142,14 @@ void Room::moveAlien(Room* room, Alien* alien) // Return std::vector<Alien*> ?
 	// Put alien in new room
 	room->aliensVector_.push_back(alien);
 
+	std::cout << "\nWARNING: Unidentified movement detected on the ship.\n";
 }
 
 void Room::shuffleAliens(Room* currentRoom)
 {
 	if (!isOccupied())
 	{
-		std::cout << "No alien present in " << name_ << ".\n";
+		//std::cout << "No alien present in " << name_ << ".\n";
 		return;
 	}
 
@@ -159,7 +160,7 @@ void Room::shuffleAliens(Room* currentRoom)
 
 		if (alien->moved)
 		{
-			std::cout << "Alien moved into " << name_ << " this round.\n";
+			//std::cout << "Alien moved into " << name_ << " this round.\n";
 			continue;
 		}
 
@@ -178,7 +179,7 @@ void Room::shuffleAliens(Room* currentRoom)
 			//std::cout << "CHECK : " << (linked_rooms.find(movement) == linked_rooms.end()) << "\n";
 			while (linked_rooms[movement] == nullptr)//!isAdjacent(linked_rooms[movement]))// linked_rooms.find(movement) == linked_rooms.end())
 			{
-				std::cout << "Generated new movement: " << movement << "\n";
+				//std::cout << "Generated new movement: " << movement << "\n";
 				movement = randomDirection();
 			}
 

@@ -5,6 +5,7 @@
 #include <functional>
 #include <vector>
 #include <chrono>
+#include <windows.h>
 
 #include "Player.h"
 #include "Room.h"
@@ -14,6 +15,8 @@
 using namespace std;
 int main()
 {
+	bool intro = PlaySound(L"atmosphere.wav", NULL,SND_LOOP | SND_ASYNC);
+
 	cout << "\n\n";
 	cout << " ___________________________________________________________________________________________________________________\n";
 	cout << "|                                                                                                                   |\n";
@@ -367,12 +370,12 @@ int main()
 		// ALIEN MOVEMENTS HAPPEN AFTER PLAYER MOVES
 		// Player increment counter
 		playerMoves++;
-		std::cout << "Player moves: " << playerMoves << ".\n";
+		//std::cout << "Player moves: " << playerMoves << ".\n";
 
 		if(alienMoves < playerMoves/moveInterval)
 		{
 			alienMoves = playerMoves / moveInterval;
-			std::cout << "Alien moves: " << alienMoves << ".\n";
+			//std::cout << "Alien moves: " << alienMoves << ".\n";
 			for (Room* room : allRooms)
 			{
 				room->shuffleAliens(current);
@@ -384,6 +387,59 @@ int main()
 		for (Alien* alien : allAliens)
 		{
 			alien->moved = false;
+		}
+
+		// IF ALIEN SAME ROOM ATTACKED
+		if(current->isOccupied())
+		{
+			std::cout << "                                                    .                                    \n";
+			std::cout << "                                              ..:    :..                                 \n";
+			std::cout << "                                              :..~YJ:::!:                                \n";
+			std::cout << "                                              7Y5BGBGYP5.                                \n";
+			std::cout << "                                              .YPBBBG5Y!                                 \n";
+			std::cout << "                                               !PPGBP5?^                                 \n";
+			std::cout << "                                               :Y5GYJJ~^.                                \n";
+			std::cout << "                                            .^7:?JJJ5^. :^                               \n";
+			std::cout << "                                         . .:~!!J?!7:::::7^:..                           \n";
+			std::cout << "                                       .. .:::~?5P5?^:.:..   :^                          \n";
+			std::cout << "                  ...                  ::~!:.. :?J7:...... .^^7.                         \n";
+			std::cout << "                 ^BBGGY^               :.?B5:.:~!.. .....!5^.~?                          \n";
+			std::cout << "                ~YBGPP#&B!.           :^7?^Y^:^!. ....^!JG#Y:~!                          \n";
+			std::cout << "              .~PPJJJ!!J?BBY:       .^~?: .~^~~~!^:..^!?P5^^:^!                          \n";
+			std::cout << "             .^  !^.7!.   .~JJ!:   .!!:   .5?:^:....:.^J~  :^^~                          \n";
+			std::cout << "                  Y?~~J^        !J??J:       ?::!~.  :^^~    ^:!                          \n";
+			std::cout << "            :    7. .?Y.         7:        .^7^^:.    :~~   ~:7~                         \n";
+			std::cout << "           J~....7~  !7.                  :!.:~!^::..^~::^  7~7?                         \n";
+			std::cout << "           ?     ~^ ..^.                  :?7!~!~.:!~:....~ !~!!                         \n";
+			std::cout << "           ^     ~!   .:                  . .~?~::^?!: :.^!:!^~.                         \n";
+			std::cout << "          .!~.. .!!    7                  .  :~??75J^J:..^~.:!7                          \n";
+			std::cout << "          :J.    .J    ?.                 :. .:JPP!J?! :^!! ~!!                          \n";
+			std::cout << "           5!~!7!75.   !7                 ::.^5JY^  J^  ^~^ !P!                          \n";
+			std::cout << "           ^^    .!^   .^                 .:.!~!J   !: .:.: ~#~                          \n";
+			std::cout << "            ~      ^.   ~                 .!^^~!!   ^. .... ^#?                          \n";
+			std::cout << "            ..      !   !                 .!  ^?~   ^. . .. ~#P                          \n";
+			std::cout << "             ^      .~  ^.                 ^ .~~.   .. ..^  ~&#:                         \n";
+			std::cout << "              ^      :^ ..                 : .^^     :.^~:  !&#!                         \n";
+			std::cout << "              .       ~...                 :. ^~     ^.~?.  ^JP5:                        \n";
+			std::cout << "                       .                   .!:~!     ^~7?~   ~PPGJ                       \n";
+			std::cout << "                       .                   .^ .~     .^:!5:  :PP#5P~                     \n";
+			std::cout << "                                           .J!J!      ..~JY: ^BGPJYB~^                   \n";
+			std::cout << "                                           :?!P~      .7!~7! :G7!J55YJ!:                 \n";
+			std::cout << "                                           :.^Y^       ^?:...?Y!~YJ?^^7?~:.              \n";
+			std::cout << "                                          :~~?!         !777^?::~^~Y!~?Y^7?.             \n";
+			std::cout << "                                          ^5YY           ~5G?!  :^?YJ:.^7?^.             \n";
+			std::cout << "                                          .B#7            YB5~!:^  ^~:..~G5:             \n";
+			std::cout << "                                          .##^            7BG.P^    .Y:!~:!7             \n";
+			std::cout << "                                          ^&#:            !##:^? .   !5! ..?:            \n";
+			std::cout << "                                          J&&7            Y##? :..7  ..:~^!JG^ ~^        \n";
+			std::cout << "                                         :G#BB:          ^#GG5  ...        ~5?^.         \n";
+			std::cout << "                                          .:^!7~.       ^?!.                             \n";
+			std::cout << "\nA dark, sleek mass enters the room...\n";
+			std::cout << "\nIt contorts, twisting and convulsing. It swipes at you with an twisted appendage.\n";
+
+			player.change_health(-1);
+
+			std::cout << "\nYou take 1 damage. Act quickly.\n";
 		}
 
 	}
